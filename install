@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+chmod 777 launch.sh
+cd tg
+wget "https://valtman.name/files/telegram-cli-1222"
+mv telegram-cli-1222 tg
+chmod +x tg
+cd ..
+sudo pip3 install redis
+sudo service redis-server restart
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get dist-upgrade
+sudo ppa-purge
+sudo apt-get install libreadline-dev -y libconfig-dev -y libssl-dev -y lua5.2 -y liblua5.2-dev -y lua-socket -y lua-sec -y lua-expat -y libevent-dev -y make unzip git redis-server autoconf g++ -y libjansson-dev -y libpython-dev -y expat libexpat1-dev -y
+wget http://luarocks.org/releases/luarocks-2.2.2.tar.gz 
+ tar zxpf luarocks-2.2.2.tar.gz 
+ cd luarocks-2.2.2
+ ./configure; sudo make bootstrap 
+sudo luarocks install luasec 
+sudo luarocks install luasocket 
+sudo luarocks install redis-lua 
+sudo luarocks install lua-term 
+sudo luarocks install serpent
+sudo luarocks install dkjson 
+sudo luarocks install Lua-cURL
+cd ..
+chmod 777 tg
+chmod 777 launch.sh
+RED='\033[0;31m'
+NC='\033[0m'
+CYAN='\033[0;36m'
+echo -e "${CYAN}Install Completed! input ./launch.sh for launch bot ${NC}"
+exit
+
+
